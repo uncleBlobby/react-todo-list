@@ -1,0 +1,69 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.App {
+  position: relative;
+  height: 80vh;
+  border: 1px solid red;
+}
+
+.current-date-display {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.add-todo-button {
+  position: relative;
+  min-width: 25%;
+  margin: auto;
+  margin-top: 5vh;
+  height: 10vh;
+  border: 1px solid green;
+}
+
+.add-todo-modal {
+  border: 1px solid blue;
+  width: 80vw;
+  height: 70vh;
+  background-color: rgb(26, 26, 26);
+  z-index: 10;
+}
+
+.commit-todo-button {
+  border: 1px solid green;
+}
+
+.commit-todo-button:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+.todo-list-container {
+  margin-top: 10vh;
+  z-index: -1;
+}
+
+.todo-item {
+  position: relative;
+  width: 80vw;
+  min-height: 5vh;
+  border: 1px solid white;
+  z-index: inherit;
+}
+
+.todo-header {
+  border: 1px solid aqua;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
