@@ -8,6 +8,17 @@ import { returnDayName, returnMonthName, returnDate } from './util/Dates'
 function App() {
   const [count, setCount] = useState(0)
 
+  const [todoList, setTodoList] = useState([{}]);
+
+  const showTodoModal = () => {
+    let modal = document.getElementById("addTodoModal");
+    console.log(`displaying modal`);
+
+    if (modal != null) {
+      modal.style.display = "block";
+    }
+  }
+
   return (
     <div className="App">
       <div className='current-date-display'>
@@ -15,9 +26,9 @@ function App() {
         {returnDayName()}, {returnMonthName()} {returnDate()}
         </>
       </div>
-      <div className='add-todo-button'>
+      <div onClick={() => showTodoModal()} className='add-todo-button'>
         Add Todo
-        <AddTodoModal />
+        <AddTodoModal todoList={todoList} updateTodos={setTodoList}/>
       </div>
 
       <div className='todo-list-container'>

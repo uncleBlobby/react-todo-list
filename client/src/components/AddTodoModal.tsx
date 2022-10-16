@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export const AddTodoModal = () => {
+export const AddTodoModal = ({ todoList, updateTodos }: any) => {
     const [titleInput, setTitleInput] = useState("");
     const [descInput, setDescInput] = useState("");
     const [dateInput, setDateInput] = useState("");
@@ -35,19 +35,81 @@ export const AddTodoModal = () => {
         newTodo.dueDate = dateInput;
 
         console.log(newTodo);
+        return newTodo;
+    }
 
+    const clearInputs = () => {
+
+        setTitleInput('');
+        setDescInput('');
+        setDateInput('');
+    }
+
+    const commitAndSubmitTodo = () => {
+        if(titleInput != ""){
+            let todo = makeTodoObject();
+            clearInputs();
+            updateTodos(
+                [...todoList, todo]
+            );
+        } else {
+            alert("Title cannot be empty.")
+        }
+    }
+
+    const cancelTodoButton = (event: any) => {
+        clearInputs();
+        hideAddTodoModal(event);
+    }
+
+    const hideAddTodoModal = (event: any) => {
+        console.log(`hiding todo modal`);
+        let modal = document.getElementById('addTodoModal');
+
+        console.log(modal);
+
+        if (modal != null){
+            modal.style.display = "none";
+        }
+
+        console.log(`modal.style.display: ${modal?.style.display}`)
+        event?.stopPropagation();
     }
 
     return (
-        <div className='add-todo-modal'>
+        <div id='addTodoModal' className='add-todo-modal'>
           /Modal/
           <br></br>
-          Todo:<input onChange={(e) => titleInputListener(e)} placeholder='title'></input>
+          Todo: 
+            <input 
+                onChange={(e) => titleInputListener(e)} 
+                placeholder='title'
+                value={titleInput}
+                />
           <br></br>
-          Description:<input onChange={(e) => descInputListener(e)} placeholder='description'></input>
+          Description:  
+            <input 
+                onChange={(e) => descInputListener(e)} 
+                placeholder='description'
+                value={descInput}
+                />
           <br></br>
-          Due Date:<input onChange={(e) => dateInputListener(e)} type="date" placeholder='due date'></input>
-          <div onClick={() => makeTodoObject()} className='commit-todo-button'>Add Todo</div>
+          Due Date:
+            <input 
+                onChange={(e) => dateInputListener(e)} 
+                type="date"
+                value={dateInput}
+                />
+          <div 
+            onClick={() => commitAndSubmitTodo()} 
+            className='commit-todo-button'>
+            Add Todo
+          </div>
+          <div 
+            className='cancel-todo-button'
+            onClick={(e) => cancelTodoButton(e)}>
+            Cancel
+          </div>
         </div>
     )
 }

@@ -34,7 +34,12 @@
   z-index: 10;
 }
 
+#addTodoModal {
+  visibility: visible;
+}
+
 .commit-todo-button {
+  margin-top: 1vh;
   border: 1px solid green;
 }
 
@@ -42,6 +47,18 @@
   background-color: green;
   cursor: pointer;
 }
+
+.cancel-todo-button {
+  margin-top: 1vh;
+  border: 1px solid red;
+}
+
+.cancel-todo-button:hover {
+  background-color: red;
+  cursor: pointer;
+  z-index: 20;
+}
+
 
 .todo-list-container {
   margin-top: 10vh;
