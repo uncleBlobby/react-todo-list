@@ -89,6 +89,10 @@
   margin-bottom: 1vh;
 }
 
+.todo-item:hover {
+  background-color: #262626;
+}
+
 .todo-header {
   position: absolute;
   top: 0;
@@ -116,4 +120,20 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.completion-status-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.remove-todo-button {
+  padding-left: 1vw;
+  padding-right: 2vw;
+  cursor: pointer;
+}
+
+.complete-todo-button {
+  padding-right: 1vw;
+  cursor: pointer;
 }

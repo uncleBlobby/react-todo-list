@@ -9,7 +9,7 @@ import { returnDayName, returnMonthName, returnDate } from './util/Dates'
 function App() {
   const [count, setCount] = useState(0)
 
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState<any>([]);
 
   const showTodoModal = () => {
     let modal = document.getElementById("addTodoModal");
@@ -19,6 +19,20 @@ function App() {
       modal.style.display = "block";
     }
     console.log(todoList);
+  }
+
+  const deleteTodoByID = (target: string) => {
+    console.log(`deleting todo: ${target}`)
+    for (let i = 0; i < todoList.length; i++){
+      if (todoList[i].UUID == target){
+        console.log(`found target todo`);
+        let newArray = todoList;
+        newArray.splice(i, 1);
+        setTodoList(...todoList, newArray)
+
+      }
+      
+    }
   }
 
   return (
@@ -37,7 +51,7 @@ function App() {
         <>
       {todoList.map((todo: { title: string, description: string, dueDate: string, UUID: string}, index: number) => {
         return(
-          <TodoListItem todoList={todoList} title={todo.title} description={todo.description} date={todo.dueDate} key={todo.UUID}/>
+          <TodoListItem deleteTodoByID={deleteTodoByID} title={todo.title} description={todo.description} date={todo.dueDate} key={todo.UUID} UUID={todo.UUID}/>
         )
         
       })}
