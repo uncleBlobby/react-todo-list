@@ -2,13 +2,14 @@ import { useState } from 'react'
 import './App.css'
 
 import { AddTodoModal } from './components/AddTodoModal'
+import { TodoListItem } from './components/TodoListItem'
 
 import { returnDayName, returnMonthName, returnDate } from './util/Dates'
 
 function App() {
   const [count, setCount] = useState(0)
 
-  const [todoList, setTodoList] = useState([{}]);
+  const [todoList, setTodoList] = useState([]);
 
   const showTodoModal = () => {
     let modal = document.getElementById("addTodoModal");
@@ -17,6 +18,7 @@ function App() {
     if (modal != null) {
       modal.style.display = "block";
     }
+    console.log(todoList);
   }
 
   return (
@@ -32,14 +34,16 @@ function App() {
       </div>
 
       <div className='todo-list-container'>
-        <div className='todo-item'>
-          <div className='todo-header'>
-            Todo Header
-          </div>
-          <div className='todo-description'>
-            Todo Description
-          </div>
-        </div>
+        <>
+      {todoList.map((todo: { title: string, description: string, dueDate: string; }, index: number) => {
+        return(
+          <TodoListItem todoList={todoList} title={todo.title} description={todo.description} date={todo.dueDate} key={index}/>
+        )
+        
+      })}
+        
+        </>
+
       </div>
     </div>
   )
