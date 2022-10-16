@@ -11,7 +11,7 @@ export const TodoListItem = ({ deleteTodoByID, todoList, title, description, dat
 
     return (
 
-        <div className='todo-item'>
+        <div key={UUID} className='todo-item'>
           <div className='todo-header'>
             <i>{title}</i>
           </div>
