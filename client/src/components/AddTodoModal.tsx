@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { UUIDGenerator } from "../util/UUID";
 
 
 export const AddTodoModal = ({ todoList, updateTodos }: any) => {
@@ -29,10 +30,12 @@ export const AddTodoModal = ({ todoList, updateTodos }: any) => {
             title: "",
             description: "",
             dueDate: "",
+            UUID: "",
         };
         newTodo.title = titleInput;
         newTodo.description = descInput;
         newTodo.dueDate = dateInput;
+        newTodo.UUID = UUIDGenerator();
 
         console.log(newTodo);
         return newTodo;

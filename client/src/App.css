@@ -8,7 +8,7 @@
 .App {
   position: relative;
   height: 80vh;
-  border: 1px solid red;
+  border: 1px solid rgba(136, 136, 136, 0.075);
 }
 
 .current-date-display {
@@ -23,18 +23,18 @@
   margin: auto;
   margin-top: 5vh;
   height: 10vh;
-  border: 1px solid rgb(133, 133, 133);
   border-radius: 5px;
   z-index: 20;
+  background-color: #343434;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .add-todo-button:hover {
   cursor: pointer;
-  background-color: rgba(0, 128, 0, 0.185);
+  background-color: #444444;
 }
 
 .add-todo-modal {
-  border: 1px solid blue;
   width: 80vw;
   height: 70vh;
   background-color: rgb(26, 26, 26);
@@ -75,15 +75,18 @@
   margin-top: 10vh;
   width: 80vw;
   height: 50vh;
-  border: 1px solid pink;
+  border: 1px solid rgba(255, 192, 203, 0);
 }
 
 .todo-item {
   position: relative;
   width: 80vw;
   min-height: 5vh;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-top: 1px solid rgba(0, 0, 0, 0.253);
   z-index: inherit;
+  box-shadow: rgba(0, 0, 0, 0.349) 0px 3px 3px 0px;
+  margin-bottom: 1vh;
 }
 
 .todo-header {

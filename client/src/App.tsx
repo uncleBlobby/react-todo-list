@@ -35,9 +35,9 @@ function App() {
 
       <div className='todo-list-container'>
         <>
-      {todoList.map((todo: { title: string, description: string, dueDate: string; }, index: number) => {
+      {todoList.map((todo: { title: string, description: string, dueDate: string, UUID: string}, index: number) => {
         return(
-          <TodoListItem todoList={todoList} title={todo.title} description={todo.description} date={todo.dueDate} key={index}/>
+          <TodoListItem todoList={todoList} title={todo.title} description={todo.description} date={todo.dueDate} key={todo.UUID}/>
         )
         
       })}
