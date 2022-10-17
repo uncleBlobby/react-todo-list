@@ -7,6 +7,8 @@ const port = 5174;
 app.use(cors());
 app.use(express.json());
 
+const db = require('./db')
+
 const users = [];
 
 app.get('/', (req, res) => {
@@ -32,6 +34,9 @@ app.post('/users/:userID/todos', (req, res) => {
     }
     console.log(`received post request at '/users/${user}/todos'`)
     console.log(`new todo ${JSON.stringify(req.body.todo)}`)
+
+    db.create();
+    db.add(req.body.todo);
     
     //console.log(res.data);
 })
