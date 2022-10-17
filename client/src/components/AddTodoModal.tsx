@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react"
 import { UUIDGenerator } from "../util/UUID";
 
@@ -6,6 +7,7 @@ export const AddTodoModal = ({ todoList, updateTodos }: any) => {
     const [titleInput, setTitleInput] = useState("");
     const [descInput, setDescInput] = useState("");
     const [dateInput, setDateInput] = useState("");
+    const [UUID, setUUID] = useState("");
     
     const titleInputListener = (event: any) => {
         console.log(`todo title: ${event.target.value}`)
@@ -30,12 +32,15 @@ export const AddTodoModal = ({ todoList, updateTodos }: any) => {
             title: "",
             description: "",
             dueDate: "",
+            createdAt: "",
             UUID: "",
         };
         newTodo.title = titleInput;
         newTodo.description = descInput;
         newTodo.dueDate = dateInput;
+        newTodo.createdAt = Date();
         newTodo.UUID = UUIDGenerator();
+        setUUID(newTodo.UUID);
 
         console.log(newTodo);
         return newTodo;
@@ -79,6 +84,19 @@ export const AddTodoModal = ({ todoList, updateTodos }: any) => {
         event?.stopPropagation();
     }
 
+    const sendTodo = () => {
+        let todo = makeTodoObject();
+        axios({
+            method: 'post',
+            url: 'http://localhost:5174/users/uncleBlobby/todos',
+            data: {
+                todo: todo
+            }
+        });
+    }
+
+
+
     return (
         <div id='addTodoModal' className='add-todo-modal'>
           /Modal/
@@ -113,6 +131,7 @@ export const AddTodoModal = ({ todoList, updateTodos }: any) => {
             onClick={(e) => cancelTodoButton(e)}>
             Cancel
           </div>
+          <button onClick={() => sendTodo()}>Send Todo over Wire</button>
         </div>
     )
 }

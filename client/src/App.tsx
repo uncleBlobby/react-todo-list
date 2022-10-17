@@ -3,9 +3,9 @@ import './App.css'
 
 import { AddTodoModal } from './components/AddTodoModal'
 import { TodoListContainer } from './components/TodoListContainer'
-import { TodoListItem } from './components/TodoListItem'
-
 import { returnDayName, returnMonthName, returnDate } from './util/Dates'
+
+const SERVER = "http://localhost:5174"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -40,8 +40,16 @@ function App() {
     }
   }
 
+  const sendPing = () => {
+    console.log(`pinging server...`)
+    fetch(SERVER + "/")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }
+
   return (
     <div className="App">
+      <button onClick={() => sendPing()}>Ping Server</button>
       <div className='current-date-display'>
         <>
         {returnDayName()}, {returnMonthName()} {returnDate()}
